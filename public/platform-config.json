@@ -1,11 +1,11 @@
 {
   "Version": "5.9.0",
-  "Title": "PureAdmin",
+  "Title": "人口动态管理系统",
   "FixedHeader": true,
   "HiddenSideBar": false,
   "MultiTagsCache": false,
   "KeepAlive": true,
-  "Layout": "vertical",
+  "Layout": "horizontal",
   "Theme": "light",
   "DarkMode": false,
   "OverallStyle": "light",

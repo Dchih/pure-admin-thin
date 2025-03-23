@@ -30,6 +30,7 @@ import LaySetting from "./components/lay-setting/index.vue";
 import NavVertical from "./components/lay-sidebar/NavVertical.vue";
 import NavHorizontal from "./components/lay-sidebar/NavHorizontal.vue";
 import BackTopIcon from "@/assets/svg/back_top.svg?component";
+import LaySidebarBreadCrumb from "./components/lay-sidebar/components/SidebarBreadCrumb.vue";
 
 const appWrapperRef = ref();
 const { isDark } = useDark();
@@ -141,13 +142,13 @@ const LayHeader = defineComponent({
       },
       {
         default: () => [
-          !pureSetting.hiddenSideBar &&
-          (layout.value.includes("vertical") || layout.value.includes("mix"))
-            ? h(LayNavbar)
-            : null,
-          !pureSetting.hiddenSideBar && layout.value.includes("horizontal")
-            ? h(NavHorizontal)
-            : null,
+          // !pureSetting.hiddenSideBar &&
+          // (layout.value.includes("vertical") || layout.value.includes("mix"))
+          //   ? h(LayNavbar)
+          //   : null,
+
+          h(NavHorizontal),
+          h(LaySidebarBreadCrumb),
           h(LayTag)
         ]
       }
@@ -231,5 +232,11 @@ const LayHeader = defineComponent({
 
 .re-screen {
   margin-top: 12px;
+}
+
+.breadcrumb-container {
+  padding: 8px 16px;
+  background-color: #fff;
+  border-bottom: 1px solid #f0f0f0;
 }
 </style>

@@ -9,10 +9,17 @@ import { storageLocal, isAllEmpty } from "@pureadmin/utils";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 import LaySidebarItem from "../lay-sidebar/components/SidebarItem.vue";
 import LaySidebarFullScreen from "../lay-sidebar/components/SidebarFullScreen.vue";
-
+import { useLayout } from "@/layout/hooks/useLayout";
 import LogoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
 import Setting from "@iconify-icons/ri/settings-3-line";
 
+const { layout } = useLayout();
+const computedLayout = computed(() => {
+  if (Array.isArray(layout.value)) {
+    return layout.value.includes("horizontal");
+  }
+  return layout.value === "horizontal";
+});
 const menuRef = ref();
 const showLogo = ref(
   storageLocal().getItem<StorageConfigs>(
@@ -40,6 +47,13 @@ nextTick(() => {
   menuRef.value?.handleResize();
 });
 
+const whiteList = ["/error"];
+const routes = computed(() => {
+  return usePermissionStoreHook().wholeMenus.filter(
+    item => !whiteList.includes(item.path)
+  );
+});
+
 onMounted(() => {
   emitter.on("logoChange", key => {
     showLogo.value = key;
@@ -49,10 +63,14 @@ onMounted(() => {
 
 <template>
   <div
-    v-loading="usePermissionStoreHook().wholeMenus.length === 0"
-    class="horizontal-header"
+    v-loading="routes.length === 0"
+    class="horizontal-header shadow-md shadow-[rgba(0,21,41,0.08)]"
   >
-    <div v-if="showLogo" class="horizontal-header-left" @click="backTopMenu">
+    <div
+      v-if="showLogo && computedLayout"
+      class="horizontal-header-left"
+      @click="backTopMenu"
+    >
       <img :src="getLogo()" alt="logo" />
       <span>{{ title }}</span>
     </div>
@@ -64,7 +82,7 @@ onMounted(() => {
       :default-active="defaultActive"
     >
       <LaySidebarItem
-        v-for="route in usePermissionStoreHook().wholeMenus"
+        v-for="route in routes"
         :key="route.path"
         :item="route"
         :base-path="route.path"

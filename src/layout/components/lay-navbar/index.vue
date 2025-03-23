@@ -32,10 +32,11 @@ const {
       @toggleClick="toggleSideBar"
     />
 
-    <LaySidebarBreadCrumb
+    <!-- 添加菜单 -->
+    <!-- <LaySidebarBreadCrumb
       v-if="layout !== 'mix' && device !== 'mobile'"
       class="breadcrumb-container"
-    />
+    /> -->
 
     <LayNavMix v-if="layout === 'mix'" />
 
