@@ -1,16 +1,22 @@
 <script setup lang="ts">
+import { useRouter } from "vue-router";
+
 defineOptions({
   name: "BuildingCard"
 });
 
+const router = useRouter();
+
 const emit = defineEmits(["routeToResident", "routeToRoom"]);
 
 const routeToResident = () => {
-  emit("routeToResident");
+  // emit("routeToResident");
+  router.push({ name: "HouseDetail" });
 };
 
 const routeToRoom = () => {
-  emit("routeToRoom");
+  // emit("routeToRoom");
+  router.push({ name: "HouseManage" });
 };
 </script>
 

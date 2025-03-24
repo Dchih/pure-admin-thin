@@ -63,7 +63,48 @@ export default {
             import("@/views/population/house/three-real/index.vue"),
           meta: {
             title: "一标三实"
-          }
+          },
+          children: [
+            {
+              path: "/population/house/three-real/house-manage",
+              name: "HouseManage",
+              component: () =>
+                import(
+                  "@/views/population/house/three-real/houseManage/index.vue"
+                ),
+              meta: {
+                title: "房屋管理",
+                showLink: false,
+                hiddenTag: true
+              }
+            },
+            {
+              path: "/population/house/three-real/resident-manage",
+              name: "ResidentManage",
+              component: () =>
+                import(
+                  "@/views/population/house/three-real/residentManage/index.vue"
+                ),
+              meta: {
+                title: "住户管理",
+                showLink: false,
+                hiddenTag: true
+              }
+            },
+            {
+              path: "/population/house/three-real/house-detail",
+              name: "HouseDetail",
+              component: () =>
+                import(
+                  "@/views/population/house/three-real/houseDetail/houseDetail.vue"
+                ),
+              meta: {
+                title: "房屋详情",
+                showLink: false,
+                hiddenTag: true
+              }
+            }
+          ]
         }
       ]
     }

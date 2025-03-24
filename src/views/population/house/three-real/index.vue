@@ -14,6 +14,7 @@
 
 <script setup lang="ts">
 import BuildingCard from "../buildingCard.vue";
+import HouseDetailCard from "./houseDetail/card.vue";
 defineOptions({
   name: "ThreeReal"
 });

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
+import Card from "./card.vue";
+
 defineOptions({
   name: "HouseDetail"
 });
@@ -13,10 +15,10 @@ const goBack = () => {
 
 <template>
   <div class="main">
-    <el-button type="primary" @click="goBack">返回</el-button>
     <div
-      class="w-full text-18px inline-flex items-center border-b border-gray-200 pb-12px mb-12px"
+      class="w-full text-18px inline-flex items-center gap-12px border-b border-gray-200 pb-12px mb-12px"
     >
+      <el-button type="primary" @click="goBack">返回>></el-button>
       一标三实
     </div>
     <div
@@ -37,7 +39,7 @@ const goBack = () => {
         现住人员
       </div>
       <div class="flex gap-10px content-start items-start flex-wrap">
-        
+        <Card />
       </div>
     </div>
   </div>
