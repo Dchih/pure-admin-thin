@@ -25,7 +25,20 @@ export default {
             import("@/views/security/defense/real-time-capture/index.vue"),
           meta: {
             title: "实时抓拍"
-          }
+          },
+          children: [
+            {
+              path: "/security/defense/real-time-capture/archive-detail",
+              name: "ArchiveDetail",
+              component: () =>
+                import("@/views/security/defense/archive-detail/index.vue"),
+              meta: {
+                title: "实时抓拍",
+                showLink: false,
+                hiddenTag: true
+              }
+            }
+          ]
         },
         {
           path: "/security/defense/face-search",
